@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo ''
+echo -e "\e[0;32m ******* pre-commit 钩子触发 **************\e[0m"
+echo ''
+
+
+npx --no-install lint-staged
