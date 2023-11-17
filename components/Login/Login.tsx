@@ -1,84 +1,79 @@
-"use client";
-import styled from "@emotion/styled";
-import { Button, Card, Divider, Row, Image, Form, Input } from "antd";
-import left from "../assets/left.svg";
-import right from "../assets/right.svg";
-import "antd";
-import pic from "../assets/1.png";
+'use client'
+
+import styled from '@emotion/styled'
+import { Button, Card, Divider, Form, Input, Row } from 'antd'
+import left from '../assets/left.svg'
+import right from '../assets/right.svg'
+
 const Login = () => {
   return (
     <Row
       style={{
-        display: "flex",
-        backgroundColor: "#fff",
-        color: "rgb(115, 124, 140)",
-        flexDirection: "column",
-        alignItems: "center",
-        minHeight: "100vh",
+        display: 'flex',
+        backgroundColor: '#fff',
+        color: 'rgb(115, 124, 140)',
+        flexDirection: 'column',
+        alignItems: 'center',
+        minHeight: '100vh',
       }}
     >
       <Header />
       <Background />
       <ShadowCard>
         <Title>请登录</Title>
+        <Button type='primary'>Button</Button>
         <Form>
-          <Form.Item
-            name={"username"}
-            rules={[{ required: true, message: "请输入用户名" }]}
-          >
+          <Form.Item name={'username'} rules={[{ required: true, message: '请输入用户名' }]}>
             <Input
-              placeholder={"用户名"}
-              type="text"
-              id={"username"}
+              placeholder={'用户名'}
+              type='text'
+              id={'username'}
               style={{
-                border: "2px solid",
-                width: "280px",
-                marginBottom: "20px",
+                border: '2px solid',
+                width: '280px',
+                marginBottom: '20px',
               }}
             />
           </Form.Item>
-          <Form.Item
-            name={"password"}
-            rules={[{ required: true, message: "请输入密码" }]}
-          >
+          <Form.Item name={'password'} rules={[{ required: true, message: '请输入密码' }]}>
             <Input
-              placeholder={"密码"}
-              type="password"
-              id={"password"}
+              placeholder={'密码'}
+              type='password'
+              id={'password'}
               style={{
-                border: "2px solid",
-                width: "280px",
-                marginBottom: "20px",
+                border: '2px solid',
+                width: '280px',
+                marginBottom: '20px',
               }}
             />
           </Form.Item>
           <Form.Item>
-            <LongButton htmlType={"submit"} type={"primary"}>
+            <LongButton htmlType={'submit'} type={'primary'}>
               登录
             </LongButton>
             {/*此type专指antd样式*/}
           </Form.Item>
         </Form>
         <Divider />
-        <Button type={"link"} style={{ marginTop: "20px", cursor: "pointer" }}>
+        <Button type={'link'} style={{ marginTop: '20px', cursor: 'pointer' }}>
           没有账号？注册新账号
         </Button>
       </ShadowCard>
     </Row>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
 
 export const LongButton = styled(Button)`
   width: 100%;
-`;
+`
 
 const Title = styled.h1`
   margin-bottom: 2.4rem;
   font-size: 20px;
   color: rgb(94, 108, 132);
-`;
+`
 
 const Background = styled.div`
   position: absolute;
@@ -90,14 +85,14 @@ const Background = styled.div`
   background-size: calc(((100vw - 40rem) / 2) - 3.2rem);
   background-image: url(${left}), url(${right});
     calc(((100vw - 40rem) / 2) - 3.2rem), cover;
-  
-`;
+
+`
 
 const Header = styled.header`
   padding: 20px 0;
   background-size: 8rem;
   width: 100%;
-`;
+`
 
 const ShadowCard = styled(Card)`
   width: 400px;
@@ -107,7 +102,7 @@ const ShadowCard = styled(Card)`
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
   text-align: center;
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -116,4 +111,4 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-`;
+`
