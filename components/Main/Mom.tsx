@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react'
 import type { MenuProps } from 'antd'
-import { Input, Layout, Menu, Row, theme, Form, Select, Radio } from 'antd'
+import { Input, Layout, Menu, Row, theme, Form, Select, Radio, Checkbox, Col } from 'antd'
 import type { SelectProps } from 'antd'
+import FormItem from 'antd/es/form/FormItem'
 
 const { Option } = Select
 
@@ -98,12 +99,116 @@ const Mom = () => {
               { value: '其它（请注明)', label: '其它（请注明)' },
             ]}
             onChange={(e: SelectProps) => {
+              setSelectedValue(e.value)
               e.value === '其它（请注明)' ? setShowInput(true) : setShowInput(false)
             }}
           />
           {showInput && <Input placeholder='请输入内容' />}
         </Form.Item>
       </Row>
+      <Row>孕期调查：</Row>
+      <Row style={{ marginTop: '4px' }}>
+        <Form.Item label='孕期疾病或不良嗜好' name='孕期疾病或不良嗜好' rules={[{ required: true }]}>
+          <Checkbox.Group style={{ width: '100%' }}>
+            <Checkbox value='高血压'>高血压</Checkbox>
+            <Checkbox value='心脏病'>心脏病</Checkbox>
+            <Checkbox value='糖尿病'>糖尿病</Checkbox>
+            <Checkbox value='严重贫血'>严重贫血</Checkbox>
+            <Checkbox value='吸毒'>吸毒</Checkbox>
+            <Checkbox value='肥胖'>肥胖</Checkbox>
+            <Checkbox value='抑郁焦虑'>抑郁焦虑</Checkbox>
+            <Checkbox value='使用抗癫痫类药物'>使用抗癫痫类药物</Checkbox>
+            饮酒：
+            <Radio.Group>
+              <Radio value='无'>无</Radio>
+              <Radio value='偶尔'>偶尔</Radio>
+              <Radio value='经常'>经常</Radio>
+            </Radio.Group>
+          </Checkbox.Group>
+          吸烟：
+          <Radio.Group>
+            <Radio value='从不吸烟'>从不吸烟</Radio>
+            <Radio value='偶尔吸烟'>偶尔吸烟</Radio>
+            <Radio value='已戒烟1年以上'>已戒烟1年以上</Radio>
+            <Radio value='戒烟未满1年'>戒烟未满1年</Radio>
+            <Radio value='正在吸烟'>正在吸烟</Radio>
+            <Radio value='被动吸烟'>被动吸烟（怀孕期间家庭和/或工作场所有人吸烟）</Radio>
+          </Radio.Group>
+        </Form.Item>
+      </Row>
+      <Row>
+        <Col style={{ paddingTop: '5px' }}>怀孕期间，对下列食物，您食用的频率（1餐计为1次）是:</Col>
+        <Form.Item label='肉类、鱼、虾和蛋类：' name='肉类、鱼、虾和蛋类：' rules={[{ required: true }]}>
+          <Select
+            style={{ width: 120 }}
+            options={[
+              { value: '经常（≥6次/周）', label: '经常（≥6次/周）' },
+              { value: '间常（3-5次/周）', label: '间常（3-5次/周）' },
+              { value: '偶尔或不（≤2次/周）', label: '偶尔或不（≤2次/周）' },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item label='蔬菜和水果类：' name='蔬菜和水果类：' rules={[{ required: true }]}>
+          <Select
+            style={{ width: 120 }}
+            options={[
+              { value: '经常（≥6次/周）', label: '经常（≥6次/周）' },
+              { value: '间常（3-5次/周）', label: '间常（3-5次/周）' },
+              { value: '偶尔或不（≤2次/周）', label: '偶尔或不（≤2次/周）' },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item label='豆类或牛奶：' name='豆类或牛奶：' rules={[{ required: true }]}>
+          <Select
+            style={{ width: 120 }}
+            options={[
+              { value: '经常（≥6次/周）', label: '经常（≥6次/周）' },
+              { value: '间常（3-5次/周）', label: '间常（3-5次/周）' },
+              { value: '偶尔或不（≤2次/周）', label: '偶尔或不（≤2次/周）' },
+            ]}
+          />
+        </Form.Item>
+      </Row>
+      <Row style={{ paddingTop: '5px' }}>怀孕期间，您的运动情况是：</Row>
+      <Row>
+        <Form.Item
+          label='分娩前7天，您有几天能够做到每天至少60分钟及以上的中高强度运动（可累计）？'
+          name='分娩前7天，您有几天能够做到每天至少60分钟及以上的中高强度运动（可累计）？'
+          rules={[{ required: true }]}
+        >
+          <Select
+            style={{ width: 80 }}
+            options={[
+              { value: '0天', label: '0天' },
+              { value: '1天', label: '1天' },
+              { value: '2天', label: '2天' },
+              { value: '3天', label: '3天' },
+              { value: '4天', label: '4天' },
+              { value: '5天', label: '5天' },
+              { value: '6天', label: '6天' },
+              { value: '7天', label: '7天' },
+              { value: '8天', label: '8天' },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item
+          label='怀孕期间，在周末或节假日，您能做到每天至少60分钟及以上的中高强度运动（可累计）？'
+          name='怀孕期间，在周末或节假日，您能做到每天至少60分钟及以上的中高强度运动（可累计）？'
+          rules={[{ required: true }]}
+        >
+          <Select
+            style={{ width: 80 }}
+            options={[
+              { value: '都能做到', label: '都能做到' },
+              { value: '多数能做到', label: '多数能做到' },
+              { value: '一半的日子能做到', label: '一半的日子能做到' },
+              { value: '少数能做到', label: '少数能做到' },
+              { value: '几乎做不到', label: '几乎做不到' },
+            ]}
+          />
+        </Form.Item>
+      </Row>
+      <Row>注：中高强度运动是指让您气喘吁吁或心跳加快的运动，如跑步，篮球，足球，游泳，健身房内跳健身操，搬重物等</Row>
     </Form>
   )
 }

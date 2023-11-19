@@ -1,11 +1,15 @@
 'use client'
 
-import React, { useState } from 'react'
 import type { MenuProps } from 'antd'
-import { Input, Layout, Menu, Row, theme, Form, Select, Radio } from 'antd'
+import React, { useState } from 'react'
+import { Form, Input, Layout, Menu, Radio, Row, Select, theme } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import Baobao from '../Main/Baobao'
 import Mom from '../Main/Mom'
+import Father from '../Main/Father'
+import Caregiver from '../Main/Caregiver'
+import Specialdetail from '../Main/Specialdetail'
+import Researchdetail from '../Main/Researchdetail'
 
 const { Header, Content, Footer, Sider } = Layout
 const { Option } = Select
@@ -38,7 +42,21 @@ const Main = () => {
           }}
         />
       </Sider>
-      <Content style={{ height: '100vh' }}>{kind === '1' ? <Baobao /> : kind === '2' ? <Mom /> : '3'}</Content>
+      <Content style={{ height: '100vh' }}>
+        {kind === '1' ? (
+          <Baobao />
+        ) : kind === '2' ? (
+          <Mom />
+        ) : kind === '3' ? (
+          <Father />
+        ) : kind === '4' ? (
+          <Caregiver />
+        ) : kind === '5' ? (
+          <Specialdetail />
+        ) : (
+          <Researchdetail />
+        )}
+      </Content>
     </Layout>
   )
 }
