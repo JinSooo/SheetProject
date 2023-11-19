@@ -30,25 +30,24 @@ const Main = () => {
   }
 
   return (
-    <Layout>
-      <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-        }}
-      >
-        <Menu
-          theme='dark'
-          mode='inline'
-          defaultSelectedKeys={['1']}
-          items={items}
-          onClick={(e) => {
-            setKind(e.key)
-          }}
-        />
-      </Sider>
-      <Button onClick={exportExcel}>Export</Button>
-      <Content style={{ height: '100vh' }}>{kind === '1' ? <Baobao /> : '2'}</Content>
+    <Layout className='w-full h-full'>
+      <Header className='flex justify-end items-center h-[64px]'>
+        <Button onClick={exportExcel}>导出</Button>
+      </Header>
+      <Layout>
+        <Sider>
+          <Menu
+            theme='dark'
+            mode='inline'
+            defaultSelectedKeys={['1']}
+            items={items}
+            onClick={(e) => {
+              setKind(e.key)
+            }}
+          />
+        </Sider>
+        <Content className='h-full box-border p-6'>{kind === '1' ? <Baobao /> : '2'}</Content>
+      </Layout>
     </Layout>
   )
 }
