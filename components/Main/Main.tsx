@@ -1,10 +1,11 @@
 'use client'
 
 import type { MenuProps } from 'antd'
-import { Form, Input, Layout, Menu, Radio, Row, Select, theme } from 'antd'
+import { Button, Form, Input, Layout, Menu, Radio, Row, Select, theme } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import React, { useState } from 'react'
 import Baobao from '../Main/baobao'
+import { SheetDataInfo, exportExcelFile } from '@/lib/utils/xlsx'
 
 const { Header, Content, Footer, Sider } = Layout
 const { Option } = Select
@@ -19,6 +20,15 @@ const items: MenuProps['items'] = arr.map((_, index) => ({
 
 const Main = () => {
   const [kind, setKind] = useState<string>('1')
+
+  const exportExcel = () => {
+    const data: SheetDataInfo = {
+      sheetName: 'test',
+      data: [{ 姓名: '123', 年龄: '43252', 测试: '啊沙发沙发' }],
+    }
+    exportExcelFile([data])
+  }
+
   return (
     <Layout>
       <Sider
@@ -37,6 +47,7 @@ const Main = () => {
           }}
         />
       </Sider>
+      <Button onClick={exportExcel}>Export</Button>
       <Content style={{ height: '100vh' }}>{kind === '1' ? <Baobao /> : '2'}</Content>
     </Layout>
   )
