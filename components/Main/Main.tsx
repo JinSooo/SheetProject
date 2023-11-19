@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import type { MenuProps } from 'antd'
 import { Input, Layout, Menu, Row, theme, Form, Select, Radio } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
-import Baobao from '../Main/baobao'
+import Baobao from '../Main/Baobao'
+import Mom from '../Main/Mom'
 
 const { Header, Content, Footer, Sider } = Layout
 const { Option } = Select
@@ -37,7 +38,7 @@ const Main = () => {
           }}
         />
       </Sider>
-      <Content style={{ height: '100vh' }}>{kind === '1' ? <Baobao /> : '2'}</Content>
+      <Content style={{ height: '100vh' }}>{kind === '1' ? <Baobao /> : kind === '2' ? <Mom /> : '3'}</Content>
     </Layout>
   )
 }

@@ -1,183 +1,107 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import type { MenuProps } from 'antd'
 import { Input, Layout, Menu, Row, theme, Form, Select, Radio } from 'antd'
+import type { SelectProps } from 'antd'
 
 const { Option } = Select
 
 const Mom = () => {
+  const [showInput, setShowInput] = useState(false)
+  const [selectedValue, setSelectedValue] = useState(null)
   return (
     <Form>
       <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Form.Item label='姓名' name='姓名' rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
         <Form.Item label='年龄' name='年龄' rules={[{ required: true }]}>
           <Input placeholder='岁' />
         </Form.Item>
         <Form.Item label='身高' name='身高' rules={[{ required: true }]}>
-          <Input placeholder='cm' />
-        </Form.Item>
-        <Form.Item label='体重' name='体重' rules={[{ required: true }]}>
-          <Input />
+          <Input placeholder='m' />
         </Form.Item>
       </Row>
       <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='入院时日龄' name='入院时日龄' rules={[{ required: true }]}>
-          <Input placeholder='天数' />
+        <Form.Item label='体重(孕前)' name='体重(孕前)' rules={[{ required: true }]}>
+          <Input placeholder='kg' />
         </Form.Item>
-        <Form.Item label='性别' name='性别' rules={[{ required: true }]}>
-          <Input />
+        <Form.Item label='体重(分娩前)' name='体重(分娩前)' rules={[{ required: true }]}>
+          <Input placeholder='kg' />
         </Form.Item>
-        <Form.Item label='民族' name='民族' rules={[{ required: true }]}>
-          <Input />
+        <Form.Item label='BMI(分娩前)' name='BMI(分娩前)'>
+          <Input defaultValue={'x kg/㎡'} />
         </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='出生医院' name='出生医院' rules={[{ required: true }]}>
-          <Input placeholder='天数' />
-        </Form.Item>
-        <Form.Item label='研究医院' name='研究医院' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item label='住院号' name='住院号' rules={[{ required: true }]}>
-          <Input />
+        <Form.Item label='BMI(分娩前)' name='BMI(分娩前)'>
+          <Input defaultValue={'y kg/㎡'} />
         </Form.Item>
       </Row>
       <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='课题组本医院负责人(姓名)' name='课题组本医院负责人1' rules={[{ required: true }]}>
-          <Input placeholder='天数' />
-        </Form.Item>
-        <Form.Item label='课题组本医院负责人(手机号)' name='课题组本医院负责人2' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item label='研究组别' name='研究组别' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='入院日期' name='入院日期' rules={[{ required: true }]}>
-          <Input placeholder='天数' />
-        </Form.Item>
-        <Form.Item label='出院日期' name='出院日期' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item label='住院号' name='住院号' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='出院诊断' name='出院诊断' rules={[{ required: true }]}>
-          <Input placeholder='全部，分列' />
-        </Form.Item>
-        <Form.Item label='主要诊断' name='主要诊断' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item label='其他诊断' name='其他诊断' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='住院时间' name='住院时间' rules={[{ required: true }]}>
-          <Input placeholder='天' />
-        </Form.Item>
-        <Form.Item label='出院时体重' name='出院时体重' rules={[{ required: true }]}>
-          <Input placeholder='g' />
-        </Form.Item>
-        <Form.Item label='住院费用' name='住院费用' rules={[{ required: true }]}>
-          <Input placeholder='元' />
-        </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='孕次' name='孕次' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item label='产次' name='产次' rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item label='单胎/双胎/三胞胎' name='单胎/双胎/三胞胎' rules={[{ required: true }]}>
+        <Form.Item label='教育程度' name='教育程度' rules={[{ required: true }]}>
           <Radio.Group>
-            <Radio value='单胎'>单胎</Radio>
-            <Radio value='双胎'>双胎</Radio>
-            <Radio value='三胞胎'>三胞胎</Radio>
+            <Radio value='小学/初中'>小学/初中</Radio>
+            <Radio value='高中/中专'>高中/中专</Radio>
+            <Radio value='大专/职大'>大专/职大</Radio>
+            <Radio value='大学本科'>大学本科</Radio>
+            <Radio value='硕士/博士'>硕士/博士</Radio>
           </Radio.Group>
         </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='胎龄' name='胎龄' rules={[{ required: true }]}>
-          <Input placeholder='周+天' />
-        </Form.Item>
-        <Form.Item label='出生时体重' name='出生时体重' rules={[{ required: true }]}>
-          <Input placeholder='g' />
-        </Form.Item>
-        <Form.Item label='身高' name='身高' rules={[{ required: true }]}>
-          <Input placeholder='cm' />
-        </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='头围' name='头围' rules={[{ required: true }]}>
-          <Input placeholder='cm' />
-        </Form.Item>
-        <Form.Item label='小于胎龄儿' name='小于胎龄儿' rules={[{ required: true }]}>
+        <Form.Item label='产时宫内窘迫' name='产时宫内窘迫' rules={[{ required: true }]}>
           <Radio.Group>
-            <Radio value='是'>是</Radio>
+            <Radio value='有'>有</Radio>
             <Radio value='否'>否</Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label='试管婴儿' name='试管婴儿' rules={[{ required: true }]}>
+        <Form.Item label='最低胎心率' name='最低胎心率' rules={[{ required: true }]}>
+          <Input placeholder='次/分' />
+        </Form.Item>
+      </Row>
+      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Form.Item label='产时发热' name='产时发热' rules={[{ required: true }]}>
           <Radio.Group>
-            <Radio value='是'>是</Radio>
+            <Radio value='有'>有</Radio>
             <Radio value='否'>否</Radio>
           </Radio.Group>
         </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='羊水' name='羊水' rules={[{ required: true }]}>
-          <Radio.Group>
-            <Radio value='清'>清</Radio>
-            <Radio value='浑浊I°'>浑浊I°</Radio>
-            <Radio value='浑浊II°'>浑浊II°</Radio>
-            <Radio value='浑浊III°'>浑浊III°</Radio>
-          </Radio.Group>
+        <Form.Item label='产时抗生素使用' name='产时抗生素使用' rules={[{ required: true }]}>
+          <Input />
         </Form.Item>
-        <Form.Item label='胎膜早破＞18hrs' name='胎膜早破＞18hrs' rules={[{ required: true }]}>
-          <Radio.Group>
-            <Radio value='是'>是</Radio>
-            <Radio value='否'>否</Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label='分娩方式' name='分娩方式' rules={[{ required: true }]}>
-          <Radio.Group>
-            <Radio value='顺产'>顺产</Radio>
-            <Radio value='产钳助产'>产钳助产</Radio>
-            <Radio value='剖腹产'>剖腹产</Radio>
-          </Radio.Group>
+        <Form.Item label='胎盘病理报告' name='胎盘病理报告' rules={[{ required: true }]}>
+          <Input />
         </Form.Item>
       </Row>
       <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='Apgar评分' name='Apgar评分' rules={[{ required: true }]}>
+        <Form.Item label='分娩时镇静药物使用' name='分娩时镇静药物使用' rules={[{ required: true }]}>
           <Radio.Group>
-            <Radio value='1分钟'>1分钟：</Radio>
-            <Radio value='5分钟'>5分钟：</Radio>
-            <Radio value='10分钟'>10分钟：</Radio>
+            <Radio value='无'>无</Radio>
+            <Radio value='苯巴比妥钠'>苯巴比妥钠</Radio>
+            <Radio value='地西泮'>地西泮</Radio>
+            <Radio value='水合氯醛'>水合氯醛</Radio>
           </Radio.Group>
         </Form.Item>
-
-        <Form.Item label='分娩方式' name='分娩方式' rules={[{ required: true }]}>
-          <Radio.Group>
-            <Radio value='顺产'>顺产</Radio>
-            <Radio value='产钳助产'>产钳助产</Radio>
-            <Radio value='剖腹产'>剖腹产</Radio>
-          </Radio.Group>
-        </Form.Item>
-      </Row>
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Form.Item label='脐带血血气' name='脐带血血气' rules={[{ required: true }]}>
-          <Radio.Group>
-            <Radio value='pH'>pH</Radio>
-            <Radio value='PaO2  mmHg'>PaO2 mmHg</Radio>
-            <Radio value='PaCO2   mmHg'>PaCO2 mmHg</Radio>
-            <Radio value='BE  mmol/L'>BE mmol/L</Radio>
-            <Radio value='Lac  mmol/L'>Lac mmol/L</Radio>
-          </Radio.Group>
+        <Form.Item label='您的职业是：' name='您的职业是：' rules={[{ required: true }]}>
+          {/*有点小问题*/}
+          <Select
+            style={{ width: 120 }}
+            allowClear
+            value={selectedValue}
+            options={[
+              { value: '干部', label: '干部' },
+              { value: '工人', label: '工人' },
+              { value: '农民', label: '农民' },
+              { value: '科技/医务/教师', label: '科技/医务/教师' },
+              { value: '家庭妇女', label: '家庭妇女' },
+              { value: '私营业主', label: '私营业主' },
+              { value: '服务业人员', label: '服务业人员' },
+              { value: '无业', label: '无业' },
+              { value: '其它（请注明)', label: '其它（请注明)' },
+            ]}
+            onChange={(e: SelectProps) => {
+              e.value === '其它（请注明)' ? setShowInput(true) : setShowInput(false)
+            }}
+          />
+          {showInput && <Input placeholder='请输入内容' />}
         </Form.Item>
       </Row>
     </Form>
