@@ -21,31 +21,12 @@ const Login = () => {
       <Background />
       <ShadowCard>
         <Title>请登录</Title>
-        <Button type='primary'>Button</Button>
         <Form>
           <Form.Item name={'username'} rules={[{ required: true, message: '请输入用户名' }]}>
-            <Input
-              placeholder={'用户名'}
-              type='text'
-              id={'username'}
-              style={{
-                border: '2px solid',
-                width: '280px',
-                marginBottom: '20px',
-              }}
-            />
+            <Input placeholder={'用户名'} type='text' id={'username'} />
           </Form.Item>
           <Form.Item name={'password'} rules={[{ required: true, message: '请输入密码' }]}>
-            <Input
-              placeholder={'密码'}
-              type='password'
-              id={'password'}
-              style={{
-                border: '2px solid',
-                width: '280px',
-                marginBottom: '20px',
-              }}
-            />
+            <Input placeholder={'密码'} type='password' id={'password'} />
           </Form.Item>
           <Form.Item>
             <LongButton htmlType={'submit'} type={'primary'}>
@@ -55,9 +36,7 @@ const Login = () => {
           </Form.Item>
         </Form>
         <Divider />
-        <Button type={'link'} style={{ marginTop: '20px', cursor: 'pointer' }}>
-          没有账号？注册新账号
-        </Button>
+        <Button type={'link'}>没有账号？注册新账号</Button>
       </ShadowCard>
     </Row>
   )
