@@ -1,15 +1,16 @@
 'use client'
 
 import type { MenuProps } from 'antd'
-import React, { useState } from 'react'
-import { Form, Input, Layout, Menu, Radio, Row, Select, theme } from 'antd'
+import { Form, Input, Layout, Menu, Radio, Row, Select, theme, Button } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
+import React, { useState } from 'react'
 import Baobao from '../Main/Baobao'
 import Mom from '../Main/Mom'
 import Father from '../Main/Father'
 import Caregiver from '../Main/Caregiver'
 import Specialdetail from '../Main/Specialdetail'
 import Researchdetail from '../Main/Researchdetail'
+import { SheetDataInfo, exportExcelFile } from '@/lib/utils/xlsx'
 
 const { Header, Content, Footer, Sider } = Layout
 const { Option } = Select
@@ -24,39 +25,48 @@ const items: MenuProps['items'] = arr.map((_, index) => ({
 
 const Main = () => {
   const [kind, setKind] = useState<string>('1')
+
+  const exportExcel = () => {
+    const data: SheetDataInfo = {
+      sheetName: 'test',
+      data: [{ 姓名: '123', 年龄: '43252', 测试: '啊沙发沙发' }],
+    }
+    exportExcelFile([data])
+  }
+
   return (
-    <Layout>
-      <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-        }}
-      >
-        <Menu
-          theme='dark'
-          mode='inline'
-          defaultSelectedKeys={['1']}
-          items={items}
-          onClick={(e) => {
-            setKind(e.key)
-          }}
-        />
-      </Sider>
-      <Content style={{ height: '100vh' }}>
-        {kind === '1' ? (
-          <Baobao />
-        ) : kind === '2' ? (
-          <Mom />
-        ) : kind === '3' ? (
-          <Father />
-        ) : kind === '4' ? (
-          <Caregiver />
-        ) : kind === '5' ? (
-          <Specialdetail />
-        ) : (
-          <Researchdetail />
-        )}
-      </Content>
+    <Layout className='w-full h-full'>
+      <Header className='flex justify-end items-center h-[64px]'>
+        <Button onClick={exportExcel}>导出</Button>
+      </Header>
+      <Layout>
+        <Sider>
+          <Menu
+            theme='dark'
+            mode='inline'
+            defaultSelectedKeys={['1']}
+            items={items}
+            onClick={(e) => {
+              setKind(e.key)
+            }}
+          />
+        </Sider>
+        <Content className='h-full box-border p-6'>
+          {kind === '1' ? (
+            <Baobao />
+          ) : kind === '2' ? (
+            <Mom />
+          ) : kind === '3' ? (
+            <Father />
+          ) : kind === '4' ? (
+            <Caregiver />
+          ) : kind === '5' ? (
+            <Specialdetail />
+          ) : (
+            <Researchdetail />
+          )}
+        </Content>
+      </Layout>
     </Layout>
   )
 }
