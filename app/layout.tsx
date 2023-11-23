@@ -1,5 +1,7 @@
+// import 'antd/dist/reset.css'
 import type { Metadata } from 'next'
 import '../lib/css/globals.css'
+import StyledComponentsRegistry from '@/components/common/AntdRegistry'
 
 export const metadata: Metadata = {
   title: 'Sheet Project',
@@ -12,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
   )
 }
