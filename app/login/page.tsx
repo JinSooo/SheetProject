@@ -1,5 +1,5 @@
-import Main from '@/components/Main/Main'
+import Login from '@/components/Login/Login'
 
 export default function Home() {
-  return <Main />
+  return <Login />
 }
